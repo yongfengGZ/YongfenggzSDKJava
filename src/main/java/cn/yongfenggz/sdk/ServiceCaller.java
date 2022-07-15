@@ -135,7 +135,6 @@ public class ServiceCaller {
         apiParam.put("request_time_ms", requestTimeMs);
         apiParam.put("sign",
                 sha256(secretKey + clientId + appCode + requestId + accessToken + requestTimeMs + encodedParam));
-//        return new GsonBuilder().create().toJson(apiParam);
         return JSONObject.toJSON(apiParam).toString();
     }
 
