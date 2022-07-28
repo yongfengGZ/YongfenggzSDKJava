@@ -32,7 +32,7 @@ public class ServiceCaller {
      * @param clientId  用户ID（内部提供）
      * @param secretKey 密钥（内部提供）
      * @return 			token信息
-     * @throws Exception
+     * @throws Exception 异常
      */
     public static String getAccessToken(String baseUrl, String clientId, String secretKey) throws Exception {
         Map<String, Object> paramMap = new HashMap<String, Object>();
@@ -58,8 +58,8 @@ public class ServiceCaller {
      * @param businessParam    业务参数（调用者提供）
      * @param connectTimeoutMs 连接超时（调用者按需要设置）
      * @param readTimeoutMs    读超时（调用者按需要设置）
-     * @return
-     * @throws Exception
+     * @return 返回值
+     * @throws Exception 异常
      */
     public static String syncRequest(String baseUrl, String clientId, String appCode, String apiVersion,
                                      String secretKey, String accessToken, String requestId, Object businessParam, int connectTimeoutMs,
@@ -83,8 +83,8 @@ public class ServiceCaller {
      * @param businessParam    业务参数（调用者提供）
      * @param connectTimeoutMs 连接超时（调用者按需要设置）
      * @param readTimeoutMs    读超时（调用者按需要设置）
-     * @return
-     * @throws Exception
+     * @return 返回值
+     * @throws Exception 异常
      */
     public static String asyncRequest(String baseUrl, String clientId, String appCode, String apiVersion,
                                       String secretKey, String accessToken, String requestId, Object businessParam, int connectTimeoutMs,
@@ -107,8 +107,8 @@ public class ServiceCaller {
      * @param transactionId    交易ID（从asyncRequest接口获取）
      * @param connectTimeoutMs 连接超时（调用者按需要设置）
      * @param readTimeoutMs    读超时（调用者按需要设置）
-     * @return
-     * @throws Exception
+     * @return 返回值
+     * @throws Exception 异常
      */
     public static String getResult(String baseUrl, String clientId, String appCode, String apiVersion, String secretKey,
                                    String accessToken, String transactionId, int connectTimeoutMs, int readTimeoutMs) throws Exception {
@@ -141,7 +141,7 @@ public class ServiceCaller {
     private static String post(String url, String param, int connectTimeoutMs, int readTimeoutMs) throws Exception {
         String responseStr = null;
         SSLContext sslcontext = SSLContexts.custom().build();
-        SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslcontext, new String[]{"TLSv1"}, null,
+        SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslcontext, new String[]{"TLSv1.2"}, null,
                 SSLConnectionSocketFactory.getDefaultHostnameVerifier());
         RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(connectTimeoutMs)
                 .setSocketTimeout(readTimeoutMs).build();
